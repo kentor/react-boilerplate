@@ -4,6 +4,7 @@ var gulp       = require('gulp');
 var jshint     = require('gulp-jshint');
 var livereload = require('tiny-lr');
 var minifyCSS  = require('gulp-minify-css');
+var plumber    = require('plumber');
 var react      = require('gulp-react');
 var source     = require('vinyl-source-stream');
 var stylus     = require('gulp-stylus');
@@ -17,16 +18,27 @@ gulp.task('web-server', function() {
 });
 
 gulp.task('css', function() {
-  gulp.src('src/css/app.styl')
+  return gulp.src('src/css/app.styl')
     .pipe(stylus({
       'include css': true,
+      sourcemap: {
+        inline: true,
+      }
     }))
-    .pipe(minifyCSS())
     .pipe(gulp.dest('public/'));
 });
 
 gulp.task('watch-css', ['css'], function() {
   gulp.watch('src/css/**/*.styl', ['css']);
+});
+
+gulp.task('html', function() {
+  return gulp.src('src/index.html')
+    .pipe(gulp.dest('public'));
+});
+
+gulp.task('watch-html', ['html'], function() {
+  gulp.watch('src/index.html', ['html']);
 });
 
 gulp.task('watch-js', function() {
@@ -39,6 +51,7 @@ gulp.task('watch-js', function() {
   function rebundle() {
     return bundler
       .bundle()
+      .on('error', function() {})
       .pipe(source('app.js'))
       .pipe(gulp.dest('./public/'));
   }
@@ -48,10 +61,12 @@ gulp.task('watch-js', function() {
 
 var LINT = [
   'src/js/**/*.js',
+  'gulpfile.js',
 ];
 
 gulp.task('lint', function() {
-  gulp.src(LINT)
+  return gulp.src(LINT)
+    .pipe(plumber())
     .pipe(react())
     .pipe(jshint())
     .pipe(jshint.reporter(require('jshint-stylish')));
@@ -61,10 +76,8 @@ gulp.task('watch-lint', ['lint'], function() {
   gulp.watch(LINT, ['lint']);
 });
 
-var tinylr;
-
 gulp.task('livereload', function() {
-  tinylr = livereload();
+  var tinylr = livereload();
   tinylr.listen(4070);
 
   gulp.watch('public/**/*', function(event) {
@@ -77,4 +90,5 @@ gulp.task('livereload', function() {
   });
 });
 
-gulp.task('default', ['watch-css', 'watch-js', 'livereload', 'web-server']);
+gulp.task('default', ['livereload', 'watch-css', 'watch-html', 'watch-js',
+                      'web-server']);

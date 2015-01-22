@@ -1,8 +1,9 @@
+var Immutable = require('immutable');
 var React = require('react');
 
 var Index = React.createClass({
-  render: function() {
-    return <h1>Hello World</h1>;
+  render() {
+    return <h1>{`${Immutable.Range(0,10).toArray()}`}</h1>;
   },
 });
 
