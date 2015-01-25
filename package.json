@@ -16,7 +16,6 @@
     "react": "^0.12.2",
     "react-addons": "^0.9.0",
     "react-router": "^0.11.6",
-    "reactify": "^0.17.1",
     "reflux": "^0.2.3",
     "tiny-lr": "^0.1.4",
     "vinyl-source-stream": "^1.0.0",
@@ -24,8 +23,7 @@
   },
   "browserify": {
     "transform": [
-      "6to5ify",
-      "reactify"
+      "6to5ify"
     ]
   }
 }
