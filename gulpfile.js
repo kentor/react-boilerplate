@@ -3,7 +3,6 @@ var express    = require('express');
 var gulp       = require('gulp');
 var jshint     = require('gulp-jshint');
 var livereload = require('tiny-lr');
-var minifyCSS  = require('gulp-minify-css');
 var plumber    = require('plumber');
 var react      = require('gulp-react');
 var source     = require('vinyl-source-stream');
