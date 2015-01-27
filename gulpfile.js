@@ -3,7 +3,7 @@ var express    = require('express');
 var gulp       = require('gulp');
 var jshint     = require('gulp-jshint');
 var livereload = require('tiny-lr');
-var plumber    = require('plumber');
+var plumber    = require('gulp-plumber');
 var react      = require('gulp-react');
 var source     = require('vinyl-source-stream');
 var stylus     = require('gulp-stylus');
@@ -67,7 +67,7 @@ gulp.task('lint', function() {
   return gulp.src(LINT)
     .pipe(plumber())
     .pipe(react())
-    .pipe(jshint())
+    .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(require('jshint-stylish')));
 });
 
