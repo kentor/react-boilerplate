@@ -1,0 +1,29 @@
+---
+ecmaFeatures:
+  arrowFunctions: true
+  blockBindings: true
+  defaultParams: true
+  jsx: true
+  objectLiteralShorthandMethods: true
+  objectLiteralShorthandProperties: true
+  templateStrings: true
+env:
+  browser: true
+  node: true
+parser: babel-eslint
+rules:
+  camelcase: 0
+  comma-spacing: 1
+  curly: 0
+  max-len: 79
+  new-cap: 0
+  no-alert: 0
+  no-comma-dangle: 0
+  no-multi-spaces: 0
+  no-multi-str: 0
+  no-undef: 1
+  no-underscore-dangle: 0
+  no-unused-vars: [2, args: none]
+  quotes: 0
+  space-infix-ops: 0
+  strict: 0

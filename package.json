@@ -2,27 +2,27 @@
   "name": "react-boilerplate",
   "version": "0.0.0",
   "devDependencies": {
-    "6to5ify": "^3.1.2",
-    "browserify": "^8.1.1",
-    "connect-livereload": "^0.5.2",
-    "express": "^4.11.1",
-    "gulp": "^3.8.10",
-    "gulp-jshint": "^1.9.0",
+    "babel-eslint": "^1.0.12",
+    "babelify": "^5.0.3",
+    "browserify": "^9.0.3",
+    "connect-livereload": "^0.5.3",
+    "eslint": "^0.15.1",
+    "express": "^4.12.1",
+    "gulp": "^3.8.11",
+    "gulp-eslint": "^0.5.0",
     "gulp-plumber": "^0.6.6",
-    "gulp-react": "^2.0.0",
-    "gulp-stylus": "^2.0.0",
+    "gulp-stylus": "^2.0.1",
     "immutable": "^3.6.2",
-    "jshint-stylish": "^1.0.0",
     "react": "^0.12.2",
-    "react-router": "^0.11.6",
-    "reflux": "^0.2.3",
-    "tiny-lr": "^0.1.4",
+    "react-router": "^0.12.4",
+    "reflux": "^0.2.5",
+    "tiny-lr": "^0.1.5",
     "vinyl-source-stream": "^1.0.0",
-    "watchify": "^2.2.1"
+    "watchify": "^2.4.0"
   },
   "browserify": {
     "transform": [
-      "6to5ify"
+      "babelify"
     ]
   }
 }

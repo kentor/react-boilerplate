@@ -1,10 +1,9 @@
 var browserify = require('browserify');
+var eslint     = require('gulp-eslint');
 var express    = require('express');
 var gulp       = require('gulp');
-var jshint     = require('gulp-jshint');
 var livereload = require('tiny-lr');
-var plumber    = require('gulp-plumber');
-var react      = require('gulp-react');
+var path       = require('path');
 var source     = require('vinyl-source-stream');
 var stylus     = require('gulp-stylus');
 var watchify   = require('watchify');
@@ -12,7 +11,7 @@ var watchify   = require('watchify');
 gulp.task('web-server', function() {
   var app = express();
   app.use(require('connect-livereload')({ port: 4070 }));
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(path.join(__dirname, 'public')));
   app.listen(4069);
 });
 
@@ -44,16 +43,18 @@ gulp.task('watch-js', function() {
   watchify.args.debug = true;
   var bundler = watchify(browserify('./src/js/app.js', watchify.args));
 
-  bundler.on('update', rebundle);
-  bundler.on('log', console.error);
-
   function rebundle() {
     return bundler
       .bundle()
-      .on('error', function() {})
+      .on('error', function(err) {
+        console.error(err.message || err);
+      })
       .pipe(source('app.js'))
       .pipe(gulp.dest('./public/'));
   }
+
+  bundler.on('update', rebundle);
+  bundler.on('log', console.error);
 
   return rebundle();
 });
@@ -65,10 +66,8 @@ var LINT = [
 
 gulp.task('lint', function() {
   return gulp.src(LINT)
-    .pipe(plumber())
-    .pipe(react())
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter(require('jshint-stylish')));
+    .pipe(eslint())
+    .pipe(eslint.format());
 });
 
 gulp.task('watch-lint', ['lint'], function() {
@@ -89,5 +88,11 @@ gulp.task('livereload', function() {
   });
 });
 
-gulp.task('default', ['livereload', 'watch-css', 'watch-html', 'watch-js',
-                      'web-server']);
+gulp.task('default', [
+  'livereload',
+  'watch-css',
+  'watch-html',
+  'watch-js',
+  'watch-lint',
+  'web-server',
+]);
