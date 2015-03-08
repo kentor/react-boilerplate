@@ -86,7 +86,7 @@ gulp.task('build-js', function() {
     .pipe(uglify({
       compress: {
         unsafe: true,
-        screw_ie8: true,
+        screw_ie8: true, //eslint-disable-line camelcase
       }
     }))
     .pipe(gulp.dest('public'));
@@ -104,7 +104,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('watch-lint', ['lint'], function() {
-  gulp.watch(LINT, ['lint']);
+  gulp.watch(LINT.concat('**/.eslintrc'), ['lint']);
 });
 
 gulp.task('livereload', function() {
