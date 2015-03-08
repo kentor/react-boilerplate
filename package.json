@@ -1,6 +1,7 @@
 {
   "name": "react-boilerplate",
   "version": "0.0.0",
+  "description": "Boilerplate for a react project.",
   "devDependencies": {
     "babel-eslint": "^1.0.12",
     "babelify": "^5.0.3",
