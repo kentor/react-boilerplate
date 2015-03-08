@@ -15,7 +15,7 @@ rules:
   camelcase: 0
   comma-spacing: 1
   curly: 0
-  max-len: 79
+  max-len: [2, 80]
   new-cap: 0
   no-alert: 0
   no-comma-dangle: 0

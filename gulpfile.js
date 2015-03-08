@@ -88,8 +88,8 @@ gulp.task('build-js', function() {
 });
 
 var LINT = [
-  'src/js/**/*.js',
-  'gulpfile.js',
+  './*.js',
+  'src/js/**/*',
 ];
 
 gulp.task('lint', function() {
