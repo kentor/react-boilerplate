@@ -1,11 +1,16 @@
 var browserify = require('browserify');
+var buffer     = require('vinyl-buffer');
 var eslint     = require('gulp-eslint');
 var express    = require('express');
 var gulp       = require('gulp');
 var livereload = require('tiny-lr');
+var minifyCSS  = require('gulp-minify-css');
 var path       = require('path');
+var replace    = require('gulp-fingerprint');
+var rev        = require('gulp-rev');
 var source     = require('vinyl-source-stream');
 var stylus     = require('gulp-stylus');
+var uglify     = require('gulp-uglify');
 var watchify   = require('watchify');
 
 gulp.task('web-server', function() {
@@ -23,11 +28,20 @@ gulp.task('css', function() {
         inline: true,
       }
     }))
-    .pipe(gulp.dest('public/'));
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('watch-css', ['css'], function() {
   gulp.watch('src/css/**/*.styl', ['css']);
+});
+
+gulp.task('build-css', function() {
+  return gulp.src('src/css/app.styl')
+    .pipe(stylus({
+      'include css': true,
+    }))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('html', function() {
@@ -50,13 +64,27 @@ gulp.task('watch-js', function() {
         console.error(err.message || err);
       })
       .pipe(source('app.js'))
-      .pipe(gulp.dest('./public/'));
+      .pipe(gulp.dest('public'));
   }
 
   bundler.on('update', rebundle);
   bundler.on('log', console.error);
 
   return rebundle();
+});
+
+gulp.task('build-js', function() {
+  return browserify('./src/js/app.js')
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(uglify({
+      compress: {
+        unsafe: true,
+        screw_ie8: true,
+      }
+    }))
+    .pipe(gulp.dest('public'));
 });
 
 var LINT = [
@@ -86,6 +114,23 @@ gulp.task('livereload', function() {
       },
     });
   });
+});
+
+gulp.task('build-rev', ['build-css', 'build-js'], function() {
+  return gulp.src([
+    'public/app.css',
+    'public/app.js'
+  ]).pipe(gulp.dest('public'))
+    .pipe(rev())
+    .pipe(gulp.dest('public'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('public'));
+});
+
+gulp.task('build', ['build-rev'], function() {
+  gulp.src('src/index.html')
+    .pipe(replace(require('./public/rev-manifest.json')))
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('default', [
