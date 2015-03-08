@@ -8,6 +8,7 @@ var minifyCSS  = require('gulp-minify-css');
 var path       = require('path');
 var replace    = require('gulp-fingerprint');
 var rev        = require('gulp-rev');
+var send       = require('send');
 var source     = require('vinyl-source-stream');
 var stylus     = require('gulp-stylus');
 var uglify     = require('gulp-uglify');
@@ -16,6 +17,10 @@ var watchify   = require('watchify');
 gulp.task('web-server', function() {
   var app = express();
   app.use(require('connect-livereload')({ port: 4070 }));
+  app.get(/^[^\.]+$/, function(req, res) {
+    send(req, 'index.html', { root: path.join(__dirname, 'public') })
+      .pipe(res);
+  });
   app.use(express.static(path.join(__dirname, 'public')));
   app.listen(4069);
 });
