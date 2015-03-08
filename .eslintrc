@@ -23,7 +23,7 @@ rules:
   no-multi-str: 0
   no-undef: 1
   no-underscore-dangle: 0
-  no-unused-vars: [2, args: none]
+  no-unused-vars: [1, args: none] # Warn until JSX implies using React is fixed
   quotes: 0
   space-infix-ops: 0
   strict: 0

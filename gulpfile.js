@@ -55,7 +55,7 @@ gulp.task('watch-html', ['html'], function() {
 
 gulp.task('watch-js', function() {
   watchify.args.debug = true;
-  var bundler = watchify(browserify('./src/js/app.js', watchify.args));
+  var bundler = watchify(browserify('./src/js/app.jsx', watchify.args));
 
   function rebundle() {
     return bundler
@@ -74,7 +74,7 @@ gulp.task('watch-js', function() {
 });
 
 gulp.task('build-js', function() {
-  return browserify('./src/js/app.js')
+  return browserify('./src/js/app.jsx')
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
