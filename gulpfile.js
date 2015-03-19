@@ -1,5 +1,6 @@
 var browserify = require('browserify');
 var buffer     = require('vinyl-buffer');
+var cache      = require('gulp-cached');
 var eslint     = require('gulp-eslint');
 var express    = require('express');
 var gulp       = require('gulp');
@@ -99,6 +100,7 @@ var LINT = [
 
 gulp.task('lint', function() {
   return gulp.src(LINT)
+    .pipe(cache('linting'))
     .pipe(eslint())
     .pipe(eslint.format());
 });

@@ -13,6 +13,7 @@
     "eslint": "^0.17.1",
     "express": "^4.12.3",
     "gulp": "^3.8.11",
+    "gulp-cached": "^1.0.4",
     "gulp-eslint": "^0.7.0",
     "gulp-fingerprint": "^0.3.2",
     "gulp-minify-css": "^1.0.0",
