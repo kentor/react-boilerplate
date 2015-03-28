@@ -40,7 +40,9 @@
   "name": "react-boilerplate",
   "version": "0.0.0",
   "scripts": {
-    "postinstall": "[ -n \"$BUILD\" ] && gulp build || true",
+    "build": "gulp build",
+    "lint": "gulp lint",
+    "postinstall": "[ -n \"$BUILD\" ] && npm run build || true",
     "start": "[ -n \"$BUILD\" ] && node index.js || gulp"
   }
 }
