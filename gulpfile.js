@@ -82,6 +82,7 @@ gulp.task('watch-js', function() {
 
 gulp.task('build-js', function() {
   return browserify('./src/js/app.jsx')
+    .plugin('bundle-collapser/plugin')
     .transform(envify({
       NODE_ENV: 'production',
     }), { global: true })
