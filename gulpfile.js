@@ -1,6 +1,7 @@
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var cache = require('gulp-cached');
+var envify = require('envify/custom');
 var eslint = require('gulp-eslint');
 var express = require('express');
 var gulp = require('gulp');
@@ -81,6 +82,10 @@ gulp.task('watch-js', function() {
 
 gulp.task('build-js', function() {
   return browserify('./src/js/app.jsx')
+    .transform(envify({
+      NODE_ENV: 'production',
+    }), { global: true })
+    .transform('unreachable-branch-transform', { global: true })
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
