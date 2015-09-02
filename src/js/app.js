@@ -1,3 +1,5 @@
+require('./polyfills');
+
 const React = require('react');
 const Router = require('react-router');
 const routes = require('./routes');
