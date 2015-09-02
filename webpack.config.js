@@ -1,11 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  devtool: 'sourcemap',
-
   entry: [
-    'webpack-dev-server/client?http://localhost:45537/js/',
-    'webpack/hot/only-dev-server',
     path.join(__dirname, 'src', 'js', 'app.js'),
   ],
 
@@ -13,7 +9,7 @@ module.exports = {
     loaders: [
       {
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel-loader'],
+        loaders: ['babel-loader'],
         test: /\.js$/,
       },
     ],
@@ -21,6 +17,6 @@ module.exports = {
 
   output: {
     filename: 'app.js',
-    publicPath: 'http://localhost:45537/js',
+    path: path.join(__dirname, 'public', 'js'),
   },
 };

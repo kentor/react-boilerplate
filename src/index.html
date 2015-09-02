@@ -6,6 +6,11 @@
   </head>
   <body>
     <div id="root"></div>
-    <script src="http://localhost:45537/js/app.js"></script>
+    <script>
+      document.write(
+        '<script src="http://' + location.host.split(':')[0] + ':45537/js/' +
+        'app.js"></' + 'script>'
+      );
+    </script>
   </body>
 </html>

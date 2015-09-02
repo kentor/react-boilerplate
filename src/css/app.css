@@ -3,3 +3,17 @@
 *:after {
   box-sizing: border-box;
 }
+
+a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.paginator .active {
+  color: blue;
+}
+
+.paginator > * {
+  display: inline-block;
+  margin: 0 10px;
+}
