@@ -1,6 +1,8 @@
 const path = require('path');
 
 module.exports = {
+  // devtool: 'sourcemap',
+
   entry: [
     'webpack-dev-server/client?http://localhost:45537/js/',
     'webpack/hot/only-dev-server',

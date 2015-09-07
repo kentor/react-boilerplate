@@ -21,6 +21,7 @@ rules:
   dot-location: [2, property]
   dot-notation: [2, {allowKeywords: true}]
   eqeqeq: 2
+  no-multi-spaces: 2
 
   ## Stylistic Issues
   array-bracket-spacing: [2, never]
