@@ -6,12 +6,13 @@
     "js:watch": "webpack-dev-server --config webpack.hot.config.js --port 45537 --hot --inline --no-info",
     "lint:watch": "esw -w",
     "start": "gulp & npm run js:watch & npm run lint:watch & npm run webserver",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test mocha --opts ./mocha.opts",
     "webserver": "live-server --port=3000 public"
   },
   "author": "Kenneth Chung",
   "devDependencies": {
     "autoprefixer": "^6.0.0",
+    "babel": "^5.8.23",
     "babel-core": "^5.8.23",
     "babel-loader": "^5.3.2",
     "core-js": "^1.1.3",
@@ -19,14 +20,17 @@
     "eslint": "^1.3.1",
     "eslint-plugin-react": "^3.3.0",
     "eslint-watch": "^2.0.0",
+    "expect": "^1.9.0",
     "gulp": "^3.9.0",
     "gulp-postcss": "^6.0.0",
     "gulp-sourcemaps": "^1.5.2",
     "immutable": "^3.7.4",
     "live-server": "^0.8.1",
+    "mocha": "^2.3.2",
     "react": "^0.13.3",
     "react-hot-loader": "^1.3.0",
     "react-router": "^0.13.3",
+    "sinon": "^1.16.1",
     "webpack": "^1.12.0",
     "webpack-dev-server": "^1.10.1"
   }

@@ -22,6 +22,7 @@ gulp.task('css:watch', ['css'], function() {
 });
 
 const staticFiles = [
+  'src/images/**/*',
   'src/index.html',
 ];
 
