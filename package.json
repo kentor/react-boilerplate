@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Boiilerplate for prototyping with React",
   "scripts": {
+    "build": "rm -fr public && gulp build && gulp processhtml && npm run js:build ",
+    "js:build": "NODE_ENV=production webpack",
     "js:watch": "webpack-dev-server --config webpack.hot.config.js --port 45537 --hot --inline --no-info",
     "lint:watch": "esw -w",
+    "prestart": "rm -fr public && mkdir -p public",
     "start": "gulp & npm run js:watch & npm run lint:watch & npm run webserver",
     "test": "NODE_ENV=test mocha --opts ./mocha.opts",
     "webserver": "live-server --port=3000 public"
@@ -23,6 +26,7 @@
     "expect": "^1.9.0",
     "gulp": "^3.9.0",
     "gulp-postcss": "^6.0.0",
+    "gulp-processhtml": "^1.1.0",
     "gulp-sourcemaps": "^1.5.2",
     "immutable": "^3.7.4",
     "live-server": "^0.8.1",

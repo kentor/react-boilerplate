@@ -2,6 +2,7 @@ const autoprefixer = require('autoprefixer');
 const cssnext = require('cssnext');
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
+const processhtml = require('gulp-processhtml');
 const sourcemaps = require('gulp-sourcemaps');
 
 const processors = [
@@ -9,16 +10,29 @@ const processors = [
   cssnext(),
 ];
 
-gulp.task('css', function() {
+gulp.task('css', function(done) {
   return gulp.src('src/css/app.css')
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
+    .on('error', done)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('css:watch', ['css'], function() {
   gulp.watch('src/css/**/*', ['css']);
+});
+
+gulp.task('css:build', function() {
+  return gulp.src('src/css/app.css')
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('processhtml', function() {
+  gulp.src('public/index.html')
+    .pipe(processhtml())
+    .pipe(gulp.dest('public'));
 });
 
 const staticFiles = [
@@ -38,4 +52,9 @@ gulp.task('static:watch', ['static'], function() {
 gulp.task('default', [
   'css:watch',
   'static:watch',
+]);
+
+gulp.task('build', [
+  'css:build',
+  'static',
 ]);
