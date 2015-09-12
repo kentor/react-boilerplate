@@ -1,4 +1,4 @@
-const React = require('react/addons');
+import React from 'react/addons';
 
 const Index = React.createClass({
   mixins: [
@@ -10,4 +10,4 @@ const Index = React.createClass({
   },
 });
 
-module.exports = Index;
+export default Index;

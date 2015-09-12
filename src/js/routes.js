@@ -1,9 +1,7 @@
-const Index = require('./components/Index');
-const React = require('react');
-const { Route } = require('react-router');
+import Index from './components/Index';
+import React from 'react';
+import { Route } from 'react-router';
 
-const routes = (
+export default (
   <Route name="app" path="/" handler={Index} />
 );
-
-module.exports = routes;
