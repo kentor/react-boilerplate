@@ -10,7 +10,7 @@
     "prestart": "rm -fr public && mkdir -p public",
     "start": "gulp & npm run js:watch & npm run lint:watch & npm run webserver",
     "test": "NODE_ENV=test mocha --opts ./mocha.opts",
-    "webserver": "live-server --port=3000 public"
+    "webserver": "live-server --port=3000 public --no-browser"
   },
   "author": "Kenneth Chung",
   "devDependencies": {
