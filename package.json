@@ -6,6 +6,7 @@
     "build": "rm -fr public && gulp build && gulp processhtml && npm run js:build ",
     "js:build": "NODE_ENV=production webpack",
     "js:watch": "webpack-dev-server --config webpack.hot.config.js --port 45537 --hot --inline --no-info",
+    "lint": "eslint .",
     "lint:watch": "esw -w",
     "prestart": "rm -fr public && mkdir -p public",
     "start": "gulp & npm run js:watch & npm run lint:watch & npm run webserver",
