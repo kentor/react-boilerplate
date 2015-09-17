@@ -7,13 +7,16 @@
   <body>
     <div id="root"></div>
     <script src="js/app.js"></script>
+
     <!-- build:remove -->
     <script>
-      document.write(
-        '<script src="http://' + location.host.split(':')[0] + ':45537/js/' +
-        'app.js"></' + 'script>'
-      );
+      !function() {
+        var bundle = document.createElement('script');
+        bundle.src = 'http://' + location.hostname + ':45537/js/app.js';
+        document.body.appendChild(bundle);
+      }()
     </script>
     <!-- /build -->
+
   </body>
 </html>

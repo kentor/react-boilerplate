@@ -1,12 +1,9 @@
 import React from 'react/addons';
+import { RouteHandler } from 'react-router';
 
 const Root = React.createClass({
-  mixins: [
-    React.addons.PureRenderMixin,
-  ],
-
   render() {
-    return <span>おはようございます。</span>;
+    return <RouteHandler />;
   },
 });
 
