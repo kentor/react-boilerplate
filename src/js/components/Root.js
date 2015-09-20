@@ -1,6 +1,6 @@
 import React from 'react/addons';
 
-const Index = React.createClass({
+const Root = React.createClass({
   mixins: [
     React.addons.PureRenderMixin,
   ],
@@ -10,4 +10,4 @@ const Index = React.createClass({
   },
 });
 
-export default Index;
+export default Root;
