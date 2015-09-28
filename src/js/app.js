@@ -1,5 +1,11 @@
 import './polyfills';
 
+if (module.hot) {
+  module.hot.setUpdateMode('websocket', {
+    url: `http://${location.hostname}:3123`,
+  });
+}
+
 import React from 'react';
 import Router from 'react-router';
 import routes from './routes';

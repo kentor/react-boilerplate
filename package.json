@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "Boiilerplate for prototyping with React",
   "scripts": {
-    "build": "rm -fr public && gulp build && gulp processhtml && npm run js:build ",
+    "build": "rm -fr public && gulp build && npm run js:build ",
     "js:build": "NODE_ENV=production webpack",
-    "js:watch": "webpack-dev-server --config webpack.hot.config.js --port 45537 --hot --inline --no-info",
+    "js:watch": "mkdir -p public/js && watchify -p [ browserify-hmr -h 0.0.0.0 -m none --supportModes [ websocket ] ] src/js/app.js -o public/js/app.js -v",
     "lint": "eslint .",
     "lint:watch": "esw -w",
-    "prestart": "rm -fr public && mkdir -p public",
+    "prestart": "rm -fr public && mkdir -p public/js",
     "start": "gulp & npm run js:watch & npm run lint:watch & npm run webserver",
     "test": "NODE_ENV=test mocha --opts ./mocha.opts",
-    "webserver": "live-server --port=3000 public --no-browser"
+    "webserver": "live-server --ignore=js --no-browser --port=3000 public"
   },
   "author": "Kenneth Chung",
   "devDependencies": {
@@ -20,6 +20,9 @@
     "babel-core": "^5.8.25",
     "babel-loader": "^5.3.2",
     "babel-plugin-react-transform": "^1.0.5",
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "browserify-hmr": "^0.3.0",
     "core-js": "^1.1.4",
     "cssnext": "^1.8.4",
     "eslint": "^1.5.0",
@@ -28,7 +31,6 @@
     "expect": "^1.10.0",
     "gulp": "^3.9.0",
     "gulp-postcss": "^6.0.0",
-    "gulp-processhtml": "^1.1.0",
     "gulp-sourcemaps": "^1.5.2",
     "immutable": "^3.7.5",
     "live-server": "^0.8.1",
@@ -37,7 +39,12 @@
     "react-router": "0.13.3",
     "react-transform-hmr": "^1.0.0",
     "sinon": "^1.16.1",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.11.0"
+    "watchify": "^3.4.0",
+    "webpack": "^1.12.2"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
   }
 }

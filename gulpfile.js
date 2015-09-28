@@ -2,7 +2,6 @@ const autoprefixer = require('autoprefixer');
 const cssnext = require('cssnext');
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
-const processhtml = require('gulp-processhtml');
 const sourcemaps = require('gulp-sourcemaps');
 
 const processors = [
@@ -27,12 +26,6 @@ gulp.task('css:build', function() {
   return gulp.src('src/css/app.css')
     .pipe(postcss(processors))
     .pipe(gulp.dest('public/css'));
-});
-
-gulp.task('processhtml', function() {
-  gulp.src('public/index.html')
-    .pipe(processhtml())
-    .pipe(gulp.dest('public'));
 });
 
 const staticFiles = [
