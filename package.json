@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "lint:watch": "esw -w",
     "prestart": "rm -fr public && mkdir -p public/js",
-    "start": "gulp & npm run js:watch & npm run lint:watch & npm run webserver",
+    "start": "parallelshell 'gulp' 'npm run js:watch' 'npm run lint:watch' 'npm run webserver'",
     "test": "NODE_ENV=test mocha --opts ./mocha.opts",
     "webserver": "live-server --ignore=js --no-browser --port=3000 public"
   },
@@ -35,6 +35,7 @@
     "immutable": "^3.7.5",
     "live-server": "^0.8.1",
     "mocha": "^2.3.3",
+    "parallelshell": "^2.0.0",
     "react": "^0.13.3",
     "react-router": "0.13.3",
     "react-transform-hmr": "^1.0.1",
