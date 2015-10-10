@@ -4,7 +4,7 @@ Boilerplate setup for
 - eslint
 - postcss with autoprefix and cssnext
 - react
-- react hot loading with webpack
+- react hot loading with browserify-hmr and react-transform-hmr
 - react router
 
 `npm install` then `npm start`
