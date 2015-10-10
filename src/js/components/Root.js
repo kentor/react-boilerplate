@@ -1,10 +1,6 @@
-import React from 'react/addons';
+import React from 'react';
 
 const Root = React.createClass({
-  mixins: [
-    React.addons.PureRenderMixin,
-  ],
-
   render() {
     return <span>おはようございます。</span>;
   },

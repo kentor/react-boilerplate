@@ -1,4 +1,6 @@
 import './polyfills';
+import ReactDOM from 'react-dom';
+import router from './router';
 
 if (module.hot) {
   module.hot.setUpdateMode('websocket', {
@@ -6,10 +8,4 @@ if (module.hot) {
   });
 }
 
-import React from 'react';
-import Router from 'react-router';
-import routes from './routes';
-
-Router.run(routes, Handler => {
-  React.render(<Handler />, document.getElementById('root'));
-});
+ReactDOM.render(router, document.getElementById('root'));
