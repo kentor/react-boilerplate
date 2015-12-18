@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
   "version": "1.0.0",
-  "description": "Boiilerplate for prototyping with React",
+  "description": "Boilerplate for prototyping with React",
   "scripts": {
     "build": "rm -fr public && gulp build && npm run js:build ",
     "js:build": "NODE_ENV=production webpack",
