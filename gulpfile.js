@@ -1,11 +1,11 @@
-const autoprefixer = require('autoprefixer');
-const cssnext = require('cssnext');
+const cssnext = require('postcss-cssnext');
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
+const postcssImport = require('postcss-import');
 const sourcemaps = require('gulp-sourcemaps');
 
 const processors = [
-  autoprefixer,
+  postcssImport(),
   cssnext(),
 ];
 
