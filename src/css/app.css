@@ -1,5 +1,78 @@
+:root {
+  --frame-height: 480px;
+  --frame-width: 854px;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+#frame {
+  height: var(--frame-height);
+  left: calc(50% - var(--frame-width) / 2);
+  position: absolute;
+  top: calc(50% - var(--frame-height) / 2);
+  width: var(--frame-width);
+}
+
+:root {
+  --background-color: #1B2B34;
+  --background-color-2: #343D46;
+  --color: #D8DEE9;
+  --green: #99C794;
+  --red: #EC5f67;
+}
+
+body {
+  background: var(--background-color);
+  font-family: Proxima Nova;
+  line-height: 1.5;
+}
+
+a {
+  border-bottom: 1px dotted;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+#frame {
+  align-items: center;
+  background: var(--background-color);
+  border: 1px solid var(--background-color-2);
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+}
+
+.align-center { text-align: center }
+.align-left { text-align: left }
+.green { color: var(--green) }
+.green-bg { background-color: var(--green) }
+.red { color: var(--red) }
+.red-bg { background-color: var(--red) }
+
+ul {
+  padding-left: 1em;
+}
+
+.file {
+  display: flex;
+}
+
+.file-part {
+  height: 10px;
+  width: 100px;
 }

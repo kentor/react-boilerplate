@@ -1,9 +1,13 @@
 import React from 'react';
 import Root from './components/Root';
-import { browserHistory, Route, Router } from 'react-router';
+import Slides from './components/Slides';
+import { hashHistory, IndexRedirect, Route, Router } from 'react-router';
 
 export default (
-  <Router history={browserHistory}>
-    <Route path="/" component={Root} />
+  <Router history={hashHistory}>
+    <Route path="/" component={Root}>
+      <IndexRedirect to="/1" />
+      <Route path=":page" component={Slides} />
+    </Route>
   </Router>
 );
