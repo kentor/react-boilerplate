@@ -6,15 +6,15 @@ const sourcemaps = require('gulp-sourcemaps');
 
 const processors = [
   postcssImport(),
-  cssnext(),
+  // cssnext(),
 ];
 
 gulp.task('css', function(done) {
   return gulp.src('src/css/app.css')
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(postcss(processors))
     .on('error', done)
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/css'));
 });
 
@@ -29,6 +29,7 @@ gulp.task('css:build', function() {
 });
 
 const staticFiles = [
+  'src/fonts/**/*',
   'src/images/**/*',
   'src/index.html',
 ];
