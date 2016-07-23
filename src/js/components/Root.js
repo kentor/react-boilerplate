@@ -1,4 +1,4 @@
-import React from 'react';
+const React = require('react');
 
 const Root = React.createClass({
   render() {
@@ -6,4 +6,4 @@ const Root = React.createClass({
   },
 });
 
-export default Root;
+module.exports = Root;

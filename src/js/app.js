@@ -1,6 +1,6 @@
-import './polyfills';
-import ReactDOM from 'react-dom';
-import router from './router';
+require('./polyfills');
+const ReactDOM = require('react-dom');
+const router = require('./router');
 
 if (module.hot) {
   module.hot.setUpdateMode('websocket', {

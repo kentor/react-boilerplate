@@ -1,8 +1,8 @@
-import React from 'react';
-import Root from './components/Root';
-import { browserHistory, Route, Router } from 'react-router';
+const React = require('react');
+const Root = require('./components/Root');
+const { browserHistory, Route, Router } = require('react-router');
 
-export default (
+module.exports = (
   <Router history={browserHistory}>
     <Route path="/" component={Root} />
   </Router>
