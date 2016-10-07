@@ -1,2 +1,0 @@
-src/js/**/__tests__/*-test.js
---compilers js:babel-register
