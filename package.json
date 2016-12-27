@@ -11,7 +11,7 @@
     "prestart": "rm -fr public && mkdir -p public/js",
     "start": "parallelshell 'gulp' 'npm run js:watch' 'npm run lint:watch' 'npm run webserver'",
     "test": "NODE_ENV=test jest",
-    "webserver": "live-server --ignore=js --no-browser --port=3000 public"
+    "webserver": "live-server --ignore=js --no-browser --port=10000 public"
   },
   "author": "Kenneth Chung",
   "devDependencies": {
