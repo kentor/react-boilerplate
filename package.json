@@ -48,7 +48,7 @@
     "react-transform-hmr": "1.0.4",
     "sinon": "1.17.6",
     "watchify": "3.7.0",
-    "webpack": "1.13.3"
+    "webpack": "2.2.1"
   },
   "browserify": {
     "transform": [

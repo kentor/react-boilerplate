@@ -7,10 +7,10 @@ module.exports = {
   ],
 
   module: {
-    loaders: [
+    rules: [
       {
         exclude: /node_modules/,
-        loaders: ['babel-loader'],
+        use: ['babel-loader'],
         test: /\.js$/,
       },
     ],
