@@ -32,7 +32,6 @@
     "eslint-config-kentor": "3.14.0",
     "eslint-plugin-react": "6.9.0",
     "eslint-watch": "2.1.14",
-    "expect": "1.20.2",
     "gulp": "3.9.1",
     "gulp-postcss": "6.3.0",
     "gulp-sourcemaps": "2.4.0",
