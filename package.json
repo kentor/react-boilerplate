@@ -14,7 +14,7 @@
     "webserver": "live-server --ignore=js --no-browser --port=10000 public"
   },
   "author": "Kenneth Chung",
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "6.22.1",
     "babel-jest": "18.0.0",
     "babel-loader": "6.2.10",
