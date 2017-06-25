@@ -1,11 +1,22 @@
 require('./polyfills');
-const ReactDOM = require('react-dom');
-const router = require('./router');
 
-if (module.hot) {
-  module.hot.setUpdateMode('websocket', {
-    url: `http://${location.hostname}:3123`,
-  });
+const React = require('react');
+const ReactDOM = require('react-dom');
+const { AppContainer } = require('react-hot-loader');
+
+const root = document.getElementById('root');
+
+function render() {
+  ReactDOM.render(
+    <AppContainer>{require('./router')}</AppContainer>,
+    root
+  );
 }
 
-ReactDOM.render(router, document.getElementById('root'));
+render();
+
+if (module.hot) {
+  module.hot.accept('./router', () => {
+    render();
+  });
+}
