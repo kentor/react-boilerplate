@@ -6424,6 +6424,10 @@ table@^4.0.1:
     slice-ansi "0.0.4"
     string-width "^2.0.0"
 
+tachyons@4.8.1:
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/tachyons/-/tachyons-4.8.1.tgz#9a3183feecb3240c4dcefee7feecc8259acd7381"
+
 tar-pack@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/tar-pack/-/tar-pack-3.4.0.tgz#23be2d7f671a8339376cbdb0b8fe3fdebf317984"
