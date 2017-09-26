@@ -7,10 +7,7 @@ const { AppContainer } = require('react-hot-loader');
 const root = document.getElementById('root');
 
 function render() {
-  ReactDOM.render(
-    <AppContainer>{require('./router')}</AppContainer>,
-    root
-  );
+  ReactDOM.render(<AppContainer>{require('./router')}</AppContainer>, root);
 }
 
 render();
