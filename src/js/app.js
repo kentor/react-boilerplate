@@ -1,4 +1,5 @@
 require('./polyfills');
+require('react-hot-loader/patch');
 
 const React = require('react');
 const ReactDOM = require('react-dom');
