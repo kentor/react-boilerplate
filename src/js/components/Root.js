@@ -1,9 +1,13 @@
-const createReactClass = require('create-react-class');
-const React = require('react');
+import createReactClass from 'create-react-class';
+import React from 'react';
 
 const Root = createReactClass({
   render() {
-    return <main>おはようございます。</main>;
+    return (
+      <div>
+        <main>おはようございます。</main>
+      </div>
+    );
   },
 });
 
